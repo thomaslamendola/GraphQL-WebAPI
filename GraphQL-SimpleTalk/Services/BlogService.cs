@@ -13,7 +13,7 @@ namespace GraphQL_SimpleTalk.Services
 
         public BlogService()
         {
-            Author DinoEsposito = new Author
+            var DinoEsposito = new Author
             {
                 Id = 1,
                 Name = "Dino Esposito",
@@ -21,7 +21,8 @@ namespace GraphQL_SimpleTalk.Services
                 ImgUrl = "https://secure.gravatar.com/avatar/ace158af8dfab0e682dcc70d965514e5?s=80&d=mm&r=g",
                 ProfileUrl = "https://www.red-gate.com/simple-talk/author/dino-esposito/"
             };
-            Author LanceTalbert = new Author
+
+            var LanceTalbert = new Author
             {
                 Id = 2,
                 Name = "Lance Talbert",
@@ -29,31 +30,37 @@ namespace GraphQL_SimpleTalk.Services
                 ImgUrl = "https://www.red-gate.com/simple-talk/wp-content/uploads/2018/01/red-gate-bio-pic.jpg",
                 ProfileUrl = "https://www.red-gate.com/simple-talk/author/lancetalbert/"
             };
+
             authors.Add(DinoEsposito);
             authors.Add(LanceTalbert);
-            Comment comment1 = new Comment
+
+            var comment1 = new Comment
             {
                 Url = "https://#",
                 Description = "Bla bla bla",
                 Count = 1
             };
-            Comment comment2 = new Comment
+
+            var comment2 = new Comment
             {
                 Url = "https://#",
                 Description = "Bla bla bla",
                 Count = 4
             };
-            Rating rating1 = new Rating
+
+            var rating1 = new Rating
             {
                 Percent = 98,
                 Count = 1
             };
-            Rating rating2 = new Rating
+
+            var rating2 = new Rating
             {
                 Percent = 95,
                 Count = 5
             };
-            Post FormsInVanilla = new Post
+
+            var FormsInVanilla = new Post
             {
                 Id = 1,
                 Title = "Building Better HTML Forms in Vanilla-JS",
@@ -65,7 +72,8 @@ namespace GraphQL_SimpleTalk.Services
                 Rating = rating1,
                 Categories = new string[] { ".NET Development" }
             };
-            Post VoiceCommands = new Post
+
+            var VoiceCommands = new Post
             {
                 Id = 2,
                 Title = "Voice Commands in Unity",
@@ -77,40 +85,48 @@ namespace GraphQL_SimpleTalk.Services
                 Rating = rating2,
                 Categories = new string[] { "C# programming" }
             };
+
             posts.Add(FormsInVanilla);
             posts.Add(VoiceCommands);
-            SocialNetwork sn1 = new SocialNetwork()
+
+            var sn1 = new SocialNetwork()
             {
                 Type = SNType.INSTAGRAM,
                 Author = DinoEsposito,
                 NickName = "@dino",
                 Url = "https://#"
             };
-            SocialNetwork sn2 = new SocialNetwork()
+
+            var sn2 = new SocialNetwork()
             {
                 Type = SNType.TWITTER,
                 Author = DinoEsposito,
                 NickName = "@dino",
                 Url = "https://#"
             };
+
             sns.Add(sn1);
             sns.Add(sn2);
         }
+
         public List<Author> GetAllAuthors()
         {
-            return this.authors;
+            return authors;
         }
+
         public Author GetAuthorById(int id)
         {
-            return authors.Where(author => author.Id == id).FirstOrDefault<Author>();
+            return authors.Where(author => author.Id == id).FirstOrDefault();
         }
+
         public List<Post> GetPostsByAuthor(int id)
         {
-            return posts.Where(post => post.Author.Id == id).ToList<Post>();
+            return posts.Where(post => post.Author.Id == id).ToList();
         }
+
         public List<SocialNetwork> GetSNsByAuthor(int id)
         {
-            return sns.Where(sn => sn.Author.Id == id).ToList<SocialNetwork>();
+            return sns.Where(sn => sn.Author.Id == id).ToList();
         }
     }
 }

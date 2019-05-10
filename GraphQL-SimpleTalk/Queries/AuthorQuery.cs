@@ -1,6 +1,7 @@
 ﻿using GraphQL.Types;
 using GraphQL_SimpleTalk.Services;
 using GraphQL_SimpleTalk.Queries.Types;
+
 namespace GraphQL_SimpleTalk.Queries
 {
     public class AuthorQuery : ObjectGraphType
@@ -16,6 +17,7 @@ namespace GraphQL_SimpleTalk.Queries
                     return blogService.GetAuthorById(id);
                 }
             );
+
             Field<ListGraphType<PostType>>(
                 name: "posts",
                 arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" }),
@@ -25,6 +27,7 @@ namespace GraphQL_SimpleTalk.Queries
                     return blogService.GetPostsByAuthor(id);
                 }
             );
+
             Field<ListGraphType<SocialNetworkType>>(
                 name: "socials",
                 arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" }),

@@ -7,6 +7,7 @@
         public string Url { get; set; }
         public Author Author { get; set; }
     }
+
     public enum SNType
     {
         INSTAGRAM, TWITTER
